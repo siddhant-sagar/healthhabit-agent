@@ -3,12 +3,14 @@
 import streamlit as st
 import requests
 import os
+from dotenv import load_dotenv
 
 # --- Setup ---
 st.title("🤖 HealthHabit AI – Your Personalized Micro-Habit Coach")
 
 # Gemini API Key (Store securely in env or Streamlit secrets in production)
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent"
 
 # --- User Input Section ---
