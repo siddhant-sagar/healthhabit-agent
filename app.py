@@ -1,17 +1,18 @@
-# HealthHabit MVP Agent using Streamlit, Gemini API, and GitHub for version control
+# HealthHabit MVP Agent using Streamlit, Gemini API (via google.generativeai), and GitHub for version control
 
 import streamlit as st
-import requests
 import os
-from dotenv import load_dotenv
+import google.generativeai as genai
 
 # --- Setup ---
 st.title("🤖 HealthHabit AI – Your Personalized Micro-Habit Coach")
 
-# Gemini API Key (Store securely in env or Streamlit secrets in production)
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent"
+# Gemini API Key
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GEMINI_API_KEY)
+
+# Load Gemini model
+model = genai.GenerativeModel("gemini-pro")
 
 # --- User Input Section ---
 st.sidebar.header("🧑‍⚕️ Personal Profile")
@@ -32,29 +33,11 @@ def generate_habit_recommendation():
 
     Provide a brief reason for your suggestion.
     """
-
-    headers = {
-        "Content-Type": "application/json",
-    }
-
-    params = {
-        "key": GEMINI_API_KEY
-    }
-
-    body = {
-        "contents": [{"parts": [{"text": prompt}]}]
-    }
-
-    response = requests.post(GEMINI_ENDPOINT, headers=headers, params=params, json=body)
-
-    if response.status_code == 200:
-        result = response.json()
-        try:
-            return result["candidates"][0]["content"]["parts"][0]["text"]
-        except:
-            return "Oops! Couldn't parse the Gemini response."
-    else:
-        return f"Error from Gemini API: {response.status_code}"
+    try:
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        return f"Error generating habit suggestion: {e}"
 
 # --- Show Habit Suggestion ---
 if st.button("Generate My Habit for Today"):
