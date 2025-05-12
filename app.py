@@ -9,7 +9,7 @@ st.title("🤖 HealthHabit AI – Your Personalized Micro-Habit Coach")
 
 # Gemini API Key (Store securely in env or Streamlit secrets in production)
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"
 
 # --- User Input Section ---
 st.sidebar.header("🧑‍⚕️ Personal Profile")
