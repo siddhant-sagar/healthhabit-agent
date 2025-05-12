@@ -95,14 +95,15 @@ The app will be available at: `http://localhost:8501`
 
 ## 📸 Example Screenshot
 
-> (Add a screenshot here in `/assets/screenshot.png` if available)
+> ![image](https://github.com/user-attachments/assets/0bc7b75e-37fa-412f-b18b-90c5fae04ae8)
+
 
 ---
 
 ## 👥 Contributors
 
 - **Siddhant Sagar** – [@ssagar2](mailto:ssagar2@andrew.cmu.edu)
-- **Gemini Pro AI** – Powered by Google Generative AI
+- **Gemini AI** – Powered by Google Generative AI
 
 ---
 
