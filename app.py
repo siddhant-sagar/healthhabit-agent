@@ -2,7 +2,7 @@
 
 import streamlit as st
 import os
-import google.generativeai as genai
+import google.generativeai import configure, GenerativeModel
 
 # --- Setup ---
 st.title("🤖 HealthHabit AI – Your Personalized Micro-Habit Coach")
