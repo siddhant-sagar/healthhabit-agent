@@ -9,10 +9,10 @@ st.title("🤖 HealthHabit AI – Your Personalized Micro-Habit Coach")
 
 # Gemini API Key
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-genai.configure(api_key=GEMINI_API_KEY)
 
 # Load Gemini model
-model = genai.GenerativeModel("gemini-pro")
+configure(api_key=GEMINI_API_KEY)
+model = GenerativeModel("models/gemini-2.0-flash")
 
 # --- User Input Section ---
 st.sidebar.header("🧑‍⚕️ Personal Profile")
